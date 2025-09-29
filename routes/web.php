@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Usercontroller;
+use App\Http\Controllers\Dashboardcontroller;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/doromal',function(){
+	return view('doro_view');
+});
+
+Route::get('/info_user',[Usercontroller::class, 'userinfo']);
+Route::get('/list',[Usercontroller::class,'listuser']);
+
+Route::get('adminlist',[Usercontroller::class,'listadmin']);
+
+Route::get('/mydashboard',[Dashboardcontroller::class,'viewdashboard']);
+Route::get('/reports',[Dashboardcontroller::class,'viewreports']);
