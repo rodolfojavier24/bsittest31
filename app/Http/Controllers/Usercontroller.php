@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class Usercontroller extends Controller
 {
@@ -19,6 +20,11 @@ class Usercontroller extends Controller
     }
 
     public function listadmin(){
-    	return view("admin",['page_tile' => 'ADMIN LIST']);
+        $liststudent = DB::table("student")->get();
+        //print_r($liststudent);die();
+
+    	return view("admin",[
+              'page_tile' => 'ADMIN LISTS',
+               "students" => $liststudent]);
     }
 }
