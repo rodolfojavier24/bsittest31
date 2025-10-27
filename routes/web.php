@@ -26,6 +26,7 @@ Route::get('/info_user',[Usercontroller::class, 'userinfo']);
 Route::get('/list',[Usercontroller::class,'listuser']);
 
 Route::get('adminlist',[Usercontroller::class,'listadmin']);
+Route::get('studentadd',[Usercontroller::class,'addstudent']);
 
 Route::get('/mydashboard',[Dashboardcontroller::class,'viewdashboard']);
 Route::get('/reports',[Dashboardcontroller::class,'viewreports']);
