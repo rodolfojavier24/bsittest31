@@ -35,6 +35,26 @@ class Usercontroller extends Controller
               'page_tile' => 'ADMIN LISTS',
                "students" => $liststudent]);
     }
+
+    public function liststudent(){
+        $liststudent = DB::table("student")->get();
+        if(!empty($liststudent)){
+            foreach ($liststudent as $key => $value) {
+               $subjectlist = DB::table("subject") 
+                            ->where("student_id",$value->id)
+                            ->get();
+               $value->listsub = $subjectlist;
+            }
+        }
+        print_r($liststudent);
+        /*
+        $liststudent = DB::table("student")
+         ->join("subject","subject.student_id","=","student.id")
+         ->where("student.id",3)
+         ->get();
+         print_r($liststudent);
+         */
+    }
     public function addstudent(){
         /*
         $insertedID =  DB::table("student")->insert([
